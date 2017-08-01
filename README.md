@@ -1,2 +1,3 @@
-# chef_collectd
-Chef cookbook for collectd
+# chef-collectd
+
+This is a Chef cookbook which installs and configures collectd.
