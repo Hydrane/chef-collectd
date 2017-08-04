@@ -3,9 +3,23 @@
 # Recipe:: config
 #
 
-template 'collectd.conf' do
-  mode     '0644'
-  source   'conf.erb'
-  path     node['collectd']['cfile']
-  variables(conf: node['collectd']['conf'])
+[node['collectd']['dir'], "#{node['collectd']['dir']}/collectd.conf.d"].each do |dir|
+  directory dir do
+    mode '0755'
+  end
+end
+
+file 'collectd.conf' do
+  mode   '0644'
+  path   "#{node['collectd']['dir']}/collectd.conf"
+  content node['collectd']['conf'].map { |f, _c| "Include #{node['collectd']['dir']}/collectd.conf.d/#{f}.conf\n" }.join
+end
+
+node['collectd']['conf'].each do |file, conf|
+  template "collectd_#{conf}" do
+    mode     '0644'
+    source   'conf.erb'
+    path     "#{node['collectd']['dir']}/collectd.conf.d/#{file}.conf"
+    variables(conf: conf)
+  end
 end
