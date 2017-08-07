@@ -1,8 +1,11 @@
 <%
 def gen(conf, i = 0)
   conf.map do |k, v|
-    if v.is_a?(Hash)
+    case v
+    when Hash
       "#{' ' * i}<#{k}>\n" + gen(v, i + 2) + "#{' ' * i}</#{k.split(' ').first}>\n"
+    when Array
+      v.each { |t| "#{' ' * i}#{k} #{t}\n" }
     else
       "#{' ' * i}#{k} #{v}\n"
     end
