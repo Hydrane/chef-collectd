@@ -18,7 +18,7 @@ file 'collectd.conf' do
 end
 
 node['collectd']['conf'].each do |file, conf|
-  template "collectd_#{conf}" do
+  template "collectd_#{file}" do
     mode     '0644'
     source   'conf.erb'
     path     "#{node['collectd']['dir']}/collectd.conf.d/#{file}.conf"
