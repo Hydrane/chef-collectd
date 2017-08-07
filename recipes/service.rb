@@ -17,6 +17,9 @@ end
 systemd_unit 'collectd.service' do
   content    node['collectd']['systemd']
   action     %i[create enable start]
-  subscribes :restart, 'template[collectd.conf]'
   notifies   :restart, 'systemd_unit[collectd.service]'
+  subscribes :restart, 'template[collectd.conf]'
+  node['collectd']['conf'].keys.each do |key|
+    subscribes :restart, "template[collectd_#{key}]"
+  end
 end
