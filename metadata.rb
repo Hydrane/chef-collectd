@@ -1,5 +1,5 @@
 name             'chef-collectd'
-version          '0.0.8'
+version          '0.0.9'
 license          'Apache 2.0'
 maintainer       'Robert Veznaver'
 maintainer_email 'rv@bidmotion.com'

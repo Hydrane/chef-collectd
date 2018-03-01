@@ -1,26 +1,15 @@
 ---
-driver:
-  name: dokken
-  chef_version: latest
-
-transport:
-  name: dokken
-
-provisioner:
-  name: dokken
-  always_update_cookbooks: true
-
-verifier:
-  name: inspec
+driver: {name: dokken}
+verifier: {name: inspec}
+transport: {name: dokken}
+provisioner: {name: dokken}
 
 platforms:
   - name: ubuntu-16.04
     driver:
-      image: ubuntu:16.04
+      image: dokken/ubuntu-16.04
       privileged: true
       pid_one_command: /bin/systemd
-      intermediate_instructions:
-        - RUN /usr/bin/apt update
 
 suites:
   - name: default
