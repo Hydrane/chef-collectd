@@ -11,6 +11,24 @@ platforms:
       privileged: true
       pid_one_command: /bin/systemd
 
+  - name: debian-9
+    driver:
+      image: dokken/debian-9
+      privileged: true
+      pid_one_command: /bin/systemd
+
+  - name: fedora-27
+    driver:
+      image: dokken/fedora-27
+      privileged: true
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: centos-7
+    driver:
+      image: dokken/centos-7
+      privileged: true
+      pid_one_command: /usr/lib/systemd/systemd
+
 suites:
   - name: default
     run_list:

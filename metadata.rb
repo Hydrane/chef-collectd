@@ -8,4 +8,11 @@ issues_url       'https://github.com/Hydrane/chef-collectd/issues'
 source_url       'https://github.com/Hydrane/chef-collectd'
 chef_version     '>= 12.19.36'
 
+depends  'yum-epel'
+
+supports 'centos'
+supports 'redhat'
+supports 'fedora'
+
+supports 'debian'
 supports 'ubuntu'
