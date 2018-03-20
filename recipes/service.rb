@@ -15,10 +15,11 @@ unless node['collectd']['user'].eql?('root')
 end
 
 systemd_unit 'collectd.service' do
-  content    node['collectd']['systemd']
-  action     %i[create enable start]
-  notifies   :restart, 'systemd_unit[collectd.service]'
-  subscribes :restart, 'template[collectd.conf]'
+  content        node['collectd']['systemd']
+  action         %i[create enable]
+  delayed_action :start
+  subscribes     :restart, 'template[collectd.conf]'
+  notifies       :restart, 'systemd_unit[collectd.service]'
   node['collectd']['conf'].each_key do |key|
     subscribes :restart, "template[collectd_#{key}]"
   end
