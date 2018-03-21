@@ -12,7 +12,10 @@ depends  'yum-epel'
 
 supports 'centos'
 supports 'redhat'
+supports 'oracle'
 supports 'fedora'
 
 supports 'debian'
 supports 'ubuntu'
+
+supports 'opensuseleap'
