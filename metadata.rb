@@ -10,12 +10,12 @@ chef_version     '>= 12.19.36'
 
 depends  'yum-epel'
 
-supports 'centos', '>= 7'
-supports 'redhat', '>= 7'
-supports 'oracle', '>= 7'
-supports 'fedora', '>= 15'
+supports 'centos', '>= 7.0'
+supports 'redhat', '>= 7.0'
+supports 'oracle', '>= 7.0'
+supports 'fedora', '>= 15.0'
 
-supports 'debian', '>= 8'
+supports 'debian', '>= 8.0'
 supports 'ubuntu', '>= 15.04'
 
 supports 'opensuseleap', '>= 42.1'
